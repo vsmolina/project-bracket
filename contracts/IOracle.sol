@@ -12,11 +12,11 @@ abstract contract IOracle {
         cancelled   //match was cancelled; there's no winner 
     }
 
-    function getPendingMatches() public virtual returns (bytes32[] memory);
+    function getPendingMatches() public view virtual returns (bytes32[] memory);
 
-    function getAllMatches() public virtual returns (bytes32[] memory);
+    function getAllMatches() public view virtual returns (bytes32[] memory);
 
-    function matchExists(bytes32 _matchId) public virtual returns (bool); 
+    function matchExists(bytes32 _matchId) public view virtual returns (bool); 
     
     //function eventExists(bytes32 _eventId) public returns (bool);
 
@@ -28,7 +28,7 @@ abstract contract IOracle {
 
     function declareOutcome(bytes32 _matchId, MatchOutcome _outcome, int _winner) virtual external; 
 
-    function getMatch(bytes32 _matchId) public virtual returns (
+    function getMatch(bytes32 _matchId) public view virtual returns (
         bytes32 id,
         bytes32 eventId, 
         string memory party1,
@@ -39,7 +39,7 @@ abstract contract IOracle {
         MatchOutcome outcome, 
         int winner);
 
-    function getMostRecentMatch(bool _pending) public virtual returns (
+    function getMostRecentMatch(bool _pending) public view virtual returns (
         bytes32 id,
         bytes32 eventId, 
         string memory party1,
@@ -52,5 +52,5 @@ abstract contract IOracle {
     
     //function eventMatches(bytes32 _eventId) public returns (bytes32[]);
 
-    function testConnection() public virtual returns (bool);
+    function testConnection() public pure virtual returns (bool);
 }
